@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Tarefas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    input {
+      width: 300px;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px 20px;
+      margin-left: 5px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f4f4f4;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .remove-btn {
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lista de Tarefas</h1>
+  <input id="tarefa" type="text" placeholder="Digite sua tarefa">
+  <button onclick="adicionarTarefa()">Adicionar</button>
+  <ul id="lista"></ul>
+
+  <script>
+    function adicionarTarefa() {
+      const input = document.getElementById('tarefa');
+      const tarefa = input.value.trim();
+      if (tarefa === '') {
+        alert('Por favor, insira uma tarefa.');
+        return;
+      }
+
+      const lista = document.getElementById('lista');
+      const item = document.createElement('li');
+      item.innerHTML = ${tarefa} <button class="remove-btn" onclick="removerTarefa(this)">Remover</button>;
+      lista.appendChild(item);
+
+      input.value = '';
+      input.focus();
+    }
+
+    function removerTarefa(botao) {
+      const item = botao.parentElement;
+      item.remove();
+    }
+  </script>
+</body>
+</html>
